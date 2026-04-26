@@ -8,8 +8,8 @@
         role="img"
         aria-labelledby="descId"
       >
-        <title id="titleId">jn-s3s' GitHub Stats, Rank: B-</title>
-        <desc id="descId">Total Stars Earned: 2, Total Commits  : 5256, Total PRs: 101, Merged PRs Percentage: 91.09, Total Issues: 3</desc>
+        <title id="titleId">jn-s3s' GitHub Stats, Rank: B+</title>
+        <desc id="descId">Total Stars Earned: 48, Total Commits  : 5257, Total PRs: 101, Merged PRs Percentage: 91.09, Total Issues: 3</desc>
         <style>
           .header {
             font: 600 18px 'Segoe UI', Ubuntu, Sans-Serif;
@@ -73,7 +73,7 @@
         stroke-dashoffset: 251.32741228718345;
       }
       to {
-        stroke-dashoffset: 158.30179454440733;
+        stroke-dashoffset: 120.49013441305168;
       }
     }
   
@@ -148,7 +148,7 @@
         x="219.01"
         y="12.5"
         data-testid="stars"
-      >2</text>
+      >48</text>
     </g>
   </g><g transform="translate(0, 25)">
     <g class="stagger" style="animation-delay: 600ms" transform="translate(25, 0)">
