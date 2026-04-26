@@ -70,12 +70,20 @@ def fetch_repo_info(owner: str, repo: str) -> dict:
 def generate_readme(projects: list[dict]) -> str:
     """Generates the README.md content with GIF on left and projects on right.
 
+    When no projects are provided, the GIF takes the full width.
+
     Parameters:
         projects: A list of repository metadata dictionaries.
 
     Returns:
         The generated README.md content as a string.
     """
+    if not projects:
+        return """<p align="center">
+  <img src="https://media1.tenor.com/m/MVFAsfv3wk0AAAAC/one-piece-one-piece-movie.gif" alt="One Piece - Chopper" width="800">
+</p>
+"""
+
     project_items = []
     for project in projects:
         name = project["name"]
@@ -135,14 +143,14 @@ def main() -> None:
             print(f"Error fetching {url}: {e}", file=sys.stderr)
             continue
 
-    if not projects:
-        print("No projects fetched. Aborting.", file=sys.stderr)
-        sys.exit(1)
-
     readme_content = generate_readme(projects)
     readme_path = Path("README.md")
     readme_path.write_text(readme_content, encoding="utf-8")
-    print(f"README.md generated successfully with {len(projects)} projects.")
+
+    if projects:
+        print(f"README.md generated successfully with {len(projects)} projects.")
+    else:
+        print("README.md generated with no projects (GIF only).")
 
 
 if __name__ == "__main__":

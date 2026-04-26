@@ -5,13 +5,6 @@ on:
     - cron: '0 0 * * *'
   workflow_dispatch:
 
-env:
-  FEATURED_REPOS: >-
-    https://github.com/jn-s3s/proxy-list,
-    https://github.com/jn-s3s/continue-config,
-    https://github.com/jn-s3s/netspeed-widget,
-    https://github.com/jn-s3s/ublacklist-serpinfo
-
 jobs:
   update-readme:
     runs-on: ubuntu-latest
@@ -29,6 +22,8 @@ jobs:
 
       - name: Generate README
         run: python generate_readme.py
+        env:
+          FEATURED_REPOS: ${{ vars.FEATURED_REPOS }}
 
       - name: Commit and push changes
         run: |
