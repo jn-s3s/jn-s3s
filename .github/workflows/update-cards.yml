@@ -32,6 +32,10 @@ jobs:
           path: profile/top-langs.svg
           token: ${{ secrets.PAT }}
 
+      - name: Generate streak card
+        run: |
+          curl -o profile/streak.svg "https://streak-stats.demolab.com/?user=${{ github.repository_owner }}${{ vars.STREAK_OPTIONS }}"
+
       - name: Commit cards
         run: |
           git config --global user.name 'github-actions[bot]'
