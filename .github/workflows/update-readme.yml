@@ -29,6 +29,7 @@ jobs:
           git checkout develop
           python generate_readme.py
           git add README.md
+          git commit -m "chore: update profile README with latest project info"
         env:
           FEATURED_REPOS: ${{ vars.FEATURED_REPOS }}
 
@@ -38,6 +39,7 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git checkout main
           git pull origin main
+          git checkout develop -- README.md
           git add README.md
-          git commit -m "chore: update profile README with latest project info"
+          git diff --cached --quiet || git commit -m "chore: update profile README with latest project info"
           git push origin main
