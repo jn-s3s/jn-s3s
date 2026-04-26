@@ -121,7 +121,7 @@ def main() -> None:
     """
     repos_env = os.environ.get(REPOS_ENV)
     if repos_env:
-        repo_urls = [url.strip() for url in repos_env.split(",") if url.strip()]
+        repo_urls = [url.strip() for url in repos_env.splitlines()  if url.strip()]
     else:
         repo_urls = []
 
