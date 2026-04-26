@@ -25,6 +25,8 @@ jobs:
 
       - name: Fetch develop branch and generate README
         run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
           git fetch -f origin develop:develop
           git checkout develop
           python generate_readme.py
