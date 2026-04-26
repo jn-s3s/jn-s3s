@@ -6,7 +6,6 @@ of public projects on the right side.
 
 Attributes:
     REPOS_ENV: Environment variable name containing comma-separated repo URLs.
-    DEFAULT_REPOS: Default list of repositories to feature if env var is not set.
 """
 
 import os
@@ -18,12 +17,6 @@ from pathlib import Path
 
 
 REPOS_ENV = "FEATURED_REPOS"
-DEFAULT_REPOS = [
-    "https://github.com/jn-s3s/proxy-list",
-    "https://github.com/jn-s3s/continue-config",
-    "https://github.com/jn-s3s/netspeed-widget",
-    "https://github.com/jn-s3s/ublacklist-serpinfo",
-]
 
 
 def parse_repo_url(url: str) -> tuple[str, str]:
@@ -123,14 +116,14 @@ def generate_readme(projects: list[dict]) -> str:
 def main() -> None:
     """Main entry point for the README generator.
 
-    Reads the repository list from environment variables or defaults,
+    Reads the repository list from environment variables,
     fetches metadata for each, and writes the generated README.md.
     """
     repos_env = os.environ.get(REPOS_ENV)
     if repos_env:
         repo_urls = [url.strip() for url in repos_env.split(",") if url.strip()]
     else:
-        repo_urls = DEFAULT_REPOS
+        repo_urls = []
 
     projects = []
     for url in repo_urls:
