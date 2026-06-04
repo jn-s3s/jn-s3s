@@ -9,7 +9,7 @@
         aria-labelledby="descId"
       >
         <title id="titleId">jn-s3s' GitHub Stats, Rank: B+</title>
-        <desc id="descId">Total Stars Earned: 42, Total Commits  : 5590, Total PRs: 137, Merged PRs Percentage: 91.24, Total Issues: 16</desc>
+        <desc id="descId">Total Stars Earned: 42, Total Commits  : 5590, Total PRs: 137, Merged PRs Percentage: 91.24, Total Issues: 27</desc>
         <style>
           .header {
             font: 600 18px 'Segoe UI', Ubuntu, Sans-Serif;
@@ -73,7 +73,7 @@
         stroke-dashoffset: 251.32741228718345;
       }
       to {
-        stroke-dashoffset: 111.13283351638347;
+        stroke-dashoffset: 107.59992145510036;
       }
     }
   
@@ -208,7 +208,7 @@
         x="219.01"
         y="12.5"
         data-testid="issues"
-      >16</text>
+      >27</text>
     </g>
   </g>
     </svg>
