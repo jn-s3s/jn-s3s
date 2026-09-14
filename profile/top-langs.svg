@@ -122,11 +122,11 @@
       <g transform="translate(0, 0)">
     <g class="stagger" style="animation-delay: 450ms">
       <text data-testid="lang-name" x="2" y="15" class="lang-name">PHP</text>
-      <text x="215" y="34" class="lang-name">33.15%</text>
+      <text x="215" y="34" class="lang-name">32.96%</text>
       
     <svg width="205" x="0" y="25">
       <rect data-testid="progress-background" rx="5" ry="5" x="0" y="0" width="205" height="8" fill="#ddd"></rect>
-      <svg data-testid="lang-progress" width="33.15055100182794%">
+      <svg data-testid="lang-progress" width="32.95679087289229%">
         <rect
             height="8"
             fill="#4F5D95"
@@ -141,11 +141,11 @@
   </g><g transform="translate(0, 40)">
     <g class="stagger" style="animation-delay: 600ms">
       <text data-testid="lang-name" x="2" y="15" class="lang-name">Blade</text>
-      <text x="215" y="34" class="lang-name">19.11%</text>
+      <text x="215" y="34" class="lang-name">19.00%</text>
       
     <svg width="205" x="0" y="25">
       <rect data-testid="progress-background" rx="5" ry="5" x="0" y="0" width="205" height="8" fill="#ddd"></rect>
-      <svg data-testid="lang-progress" width="19.111437871942165%">
+      <svg data-testid="lang-progress" width="18.999734308824642%">
         <rect
             height="8"
             fill="#f7523f"
@@ -160,11 +160,11 @@
   </g><g transform="translate(0, 80)">
     <g class="stagger" style="animation-delay: 750ms">
       <text data-testid="lang-name" x="2" y="15" class="lang-name">Vue</text>
-      <text x="215" y="34" class="lang-name">13.30%</text>
+      <text x="215" y="34" class="lang-name">13.23%</text>
       
     <svg width="205" x="0" y="25">
       <rect data-testid="progress-background" rx="5" ry="5" x="0" y="0" width="205" height="8" fill="#ddd"></rect>
-      <svg data-testid="lang-progress" width="13.303547282229324%">
+      <svg data-testid="lang-progress" width="13.225789991360637%">
         <rect
             height="8"
             fill="#41b883"
@@ -179,11 +179,11 @@
   </g><g transform="translate(0, 120)">
     <g class="stagger" style="animation-delay: 900ms">
       <text data-testid="lang-name" x="2" y="15" class="lang-name">Python</text>
-      <text x="215" y="34" class="lang-name">12.08%</text>
+      <text x="215" y="34" class="lang-name">12.01%</text>
       
     <svg width="205" x="0" y="25">
       <rect data-testid="progress-background" rx="5" ry="5" x="0" y="0" width="205" height="8" fill="#ddd"></rect>
-      <svg data-testid="lang-progress" width="12.079031913221637%">
+      <svg data-testid="lang-progress" width="12.008431735843148%">
         <rect
             height="8"
             fill="#3572A5"
@@ -198,11 +198,11 @@
   </g><g transform="translate(0, 160)">
     <g class="stagger" style="animation-delay: 1050ms">
       <text data-testid="lang-name" x="2" y="15" class="lang-name">TypeScript</text>
-      <text x="215" y="34" class="lang-name">11.77%</text>
+      <text x="215" y="34" class="lang-name">11.70%</text>
       
     <svg width="205" x="0" y="25">
       <rect data-testid="progress-background" rx="5" ry="5" x="0" y="0" width="205" height="8" fill="#ddd"></rect>
-      <svg data-testid="lang-progress" width="11.769088960282275%">
+      <svg data-testid="lang-progress" width="11.70030035419625%">
         <rect
             height="8"
             fill="#3178c6"
@@ -217,11 +217,11 @@
   </g><g transform="translate(0, 200)">
     <g class="stagger" style="animation-delay: 1200ms">
       <text data-testid="lang-name" x="2" y="15" class="lang-name">JavaScript</text>
-      <text x="215" y="34" class="lang-name">10.59%</text>
+      <text x="215" y="34" class="lang-name">11.11%</text>
       
     <svg width="205" x="0" y="25">
       <rect data-testid="progress-background" rx="5" ry="5" x="0" y="0" width="205" height="8" fill="#ddd"></rect>
-      <svg data-testid="lang-progress" width="10.58634297049666%">
+      <svg data-testid="lang-progress" width="11.108952736883037%">
         <rect
             height="8"
             fill="#f1e05a"
