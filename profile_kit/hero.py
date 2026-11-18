@@ -21,6 +21,7 @@ from profile_kit.svg import (
     esc,
     frame,
     label,
+    label_spacing,
     mono_width,
     num,
     typed_text,
@@ -228,13 +229,15 @@ def _chips(svg: Svg, chips: list[tuple[str, str]]) -> None:
     x, top = LEFT, 262
     for index, (caption, value) in enumerate(chips):
         delay = 2.0 + index * 0.12
-        label(svg, caption, x=x, y=top, size=6.5, delay=delay, css_class="rise")
+        label(svg, caption, x=x, y=top, delay=delay, css_class="rise")
         svg.add(
             f'<text class="rise" x="{x}" y="{top + 17}" font-size="10.5" '
             f'font-weight="700" fill="{TEXT_HI}" style="animation-delay:{num(delay)}s">'
             f"{esc(value)}</text>"
         )
-        width = max(display_width(caption, 6.5, 1.7), mono_width(value, 10.5))
+        width = max(
+            display_width(caption, 8, label_spacing(8)), mono_width(value, 10.5)
+        )
         x += width + 28
         if index < len(chips) - 1:
             svg.add(f'<path d="M{num(x - 14)},{top - 7}v26" stroke="{LINE_STRONG}"/>')
@@ -274,7 +277,7 @@ def _radar(svg: Svg, repos: list[Repo]) -> None:
     for degrees, text in ((0, "000"), (90, "090"), (180, "180"), (270, "270")):
         x, y = _polar(RADAR_R - 17, degrees)
         parts.append(
-            f'<text x="{num(x)}" y="{num(y + 2.5)}" font-size="6.5" text-anchor="middle" '
+            f'<text x="{num(x)}" y="{num(y + 2.5)}" font-size="8" text-anchor="middle" '
             f'fill="{TEXT_DIM}">{text}</text>'
         )
     parts.append(
@@ -324,7 +327,7 @@ def _radar(svg: Svg, repos: list[Repo]) -> None:
                 f'<circle cx="{num(x)}" cy="{num(y)}" r="2.6" fill="{AMBER}"/>'
                 f'<circle cx="{num(x)}" cy="{num(y)}" r="6" stroke="{AMBER}" '
                 f'stroke-opacity=".5"/></g>',
-                f'<text x="{num(x + 9)}" y="{num(y + 2.5)}" font-size="7" '
+                f'<text x="{num(x + 9)}" y="{num(y + 2.5)}" font-size="8" '
                 f'fill="{TEXT_MID}">M{index + 1:02d}</text>',
             )
         )
@@ -345,9 +348,12 @@ def _radar(svg: Svg, repos: list[Repo]) -> None:
 
 
 def featured_stack(repos: list[Repo]) -> str:
-    """Primary languages of the featured repositories, in order of first use."""
-    names = dict.fromkeys(repo.language for repo in repos if repo.language)
-    return " / ".join(name.upper() for name in names)
+    """Featured languages in order of first use, capped at three plus a count."""
+    names = list(dict.fromkeys(repo.language for repo in repos if repo.language))
+    stack = " / ".join(name.upper() for name in names[:3])
+    if len(names) > 3:
+        stack += f" +{len(names) - 3}"
+    return stack
 
 
 def render_hero(profile: UserProfile, repos: list[Repo]) -> str:

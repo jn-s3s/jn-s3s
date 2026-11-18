@@ -27,11 +27,10 @@ def render_langs_card(languages: list[LanguageTotal]) -> str:
         WIDTH,
         HEIGHT,
         title="Most used languages",
-        description=", ".join(
-            f"{share.language.name} {share.percent:.1f}%" for share in shares
-        ),
+        description=f"Top {len(shares)} languages by bytes: "
+        + ", ".join(f"{share.language.name} {share.percent:.1f}%" for share in shares),
     )
-    frame(svg, "TELEMETRY // LANGUAGE MATRIX", "BY BYTES")
+    frame(svg, "TELEMETRY // LANGUAGE MATRIX", f"TOP {len(shares)}")
 
     segment_width = (RIGHT - BAR_LEFT) / SEGMENTS
     for index, share in enumerate(shares):

@@ -261,10 +261,10 @@ def frame(
     line_end = right
     if meta:
         spacing = 2.0
-        meta_width = display_width(meta, 7.5, spacing)
+        meta_width = display_width(meta, 8, spacing)
         svg.add(
             f'<text class="d fade" x="{num(right + spacing)}" y="{base}" '
-            f'font-size="7.5" letter-spacing="{spacing}" text-anchor="end" '
+            f'font-size="8" letter-spacing="{spacing}" text-anchor="end" '
             f'fill="{TEXT_MID}">{esc(meta)}</text>'
         )
         line_end = right - meta_width - 12
@@ -277,10 +277,12 @@ def frame(
             )
             line_end -= 14
     line_start = label_x + display_width(label, 8, 2.4) + 10
-    svg.add(
-        f'<path class="draw" d="M{num(line_start)},{base - 3.5}H{num(line_end)}" '
-        f'pathLength="1" stroke="{LINE}" style="animation-delay:.3s"/>'
-    )
+    # a shorter rule would strike through the label text or read as a stray stub
+    if line_end - line_start >= 20:
+        svg.add(
+            f'<path class="draw" d="M{num(line_start)},{base - 3.5}H{num(line_end)}" '
+            f'pathLength="1" stroke="{LINE}" style="animation-delay:.3s"/>'
+        )
 
 
 def rolling_number(
@@ -362,20 +364,25 @@ def typed_text(
     return moment
 
 
+def label_spacing(size: float) -> float:
+    """Letter-spacing label() applies at `size`, so callers can measure widths."""
+    return round(size * 0.26, 2)
+
+
 def label(
     svg: Svg,
     text: str,
     *,
     x: float,
     y: float,
-    size: float = 6.5,
+    size: float = 8,
     fill: str = TEXT_DIM,
     anchor: str = "start",
     css_class: str = "fade",
     delay: float = 0.0,
 ) -> None:
     """Draw a small letter-spaced caption in the display font."""
-    spacing = round(size * 0.26, 2)
+    spacing = label_spacing(size)
     shift = spacing if anchor == "end" else 0
     svg.add(
         f'<text class="d {css_class}" x="{num(x + shift)}" y="{num(y)}" '

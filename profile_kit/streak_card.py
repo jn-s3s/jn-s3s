@@ -4,7 +4,7 @@ import math
 from datetime import date
 
 from profile_kit.github_api import ContributionDay
-from profile_kit.metrics import StreakSummary, Week, weekly_bins
+from profile_kit.metrics import Streak, StreakSummary, Week, weekly_bins
 from profile_kit.svg import (
     AMBER,
     CYAN,
@@ -47,6 +47,14 @@ def _range(start: date, end: date) -> str:
     return _fmt(start) if start == end else f"{_fmt(start)} - {_fmt(end)}"
 
 
+def _streak_detail(streak: Streak, last_active: date | None) -> str:
+    if streak.length:
+        return _range(streak.start, streak.end)
+    if last_active:
+        return f"LAST ACTIVE {_fmt(last_active)}"
+    return "NO ACTIVITY YET"
+
+
 def _streak_block(
     svg: Svg,
     caption: str,
@@ -56,7 +64,7 @@ def _streak_block(
     color: str,
     delay: float,
 ) -> None:
-    label(svg, caption, x=LEFT, y=top, size=7, fill=TEXT_MID, delay=delay)
+    label(svg, caption, x=LEFT, y=top, fill=TEXT_MID, delay=delay)
     rolling_number(
         svg, f"{value:,}", x=LEFT, y=top + 34, size=32, fill=color, delay=delay + 0.1
     )
@@ -97,7 +105,7 @@ def _waveform(svg: Svg, weeks: list[Week]) -> None:
         if week.month:
             labels.append(
                 f'<text class="fade" x="{num(x + column_width / 2)}" y="{WAVE_BOTTOM + 14}" '
-                f'font-size="7" text-anchor="middle" fill="{TEXT_DIM}" '
+                f'font-size="8" text-anchor="middle" fill="{TEXT_DIM}" '
                 f'style="animation-delay:{num(col_delay)}s">{week.month}</text>'
             )
     svg.add(
@@ -132,7 +140,7 @@ def render_streak_card(
         svg,
         "CURRENT STREAK",
         summary.current.length,
-        _range(summary.current.start, summary.current.end),
+        _streak_detail(summary.current, summary.last_active),
         60,
         AMBER,
         0.4,
@@ -145,7 +153,7 @@ def render_streak_card(
         svg,
         "LONGEST STREAK",
         summary.longest.length,
-        _range(summary.longest.start, summary.longest.end),
+        _streak_detail(summary.longest, summary.last_active),
         146,
         TEXT_HI,
         0.6,
@@ -155,9 +163,7 @@ def render_streak_card(
         f'stroke="{LINE}" style="animation-delay:.3s"/>'
     )
 
-    label(
-        svg, "TOTAL CONTRIBUTIONS", x=WAVE_LEFT, y=60, size=7, fill=TEXT_MID, delay=0.4
-    )
+    label(svg, "TOTAL CONTRIBUTIONS", x=WAVE_LEFT, y=60, fill=TEXT_MID, delay=0.4)
     rolling_number(svg, f"{summary.total:,}", x=WAVE_LEFT, y=84, size=22, delay=0.5)
     svg.add(
         f'<text class="fade" x="{WAVE_RIGHT}" y="60" font-size="8" text-anchor="end" '

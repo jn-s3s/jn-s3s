@@ -60,7 +60,7 @@ def _metric_row(
 ) -> None:
     delay = 0.4 + index * 0.12
     _icon(svg, icon, LEFT, y - 10, delay)
-    label(svg, caption, x=LEFT + 18, y=y, size=7, fill=TEXT_MID, delay=delay)
+    label(svg, caption, x=LEFT + 18, y=y, fill=TEXT_MID, delay=delay)
     rolling_number(
         svg, value, x=VALUE_RIGHT, y=y + 1, size=15, anchor="end", delay=delay + 0.1
     )
@@ -102,11 +102,11 @@ def _gauge(svg: Svg, level: str, percentile: float) -> None:
         f'cx="{GAUGE_X}" cy="{GAUGE_Y}" r="{GAUGE_R - 9}" stroke="{CYAN}" '
         f'stroke-opacity=".4" stroke-dasharray="2 6"/></g>',
     )
-    label(svg, "RANK", x=GAUGE_X, y=GAUGE_Y - 22, size=6.5, anchor="middle", delay=0.9)
+    label(svg, "RANK", x=GAUGE_X, y=GAUGE_Y - 22, anchor="middle", delay=0.9)
     svg.add(
         f'<text class="d fade" x="{GAUGE_X}" y="{GAUGE_Y + 12}" font-size="30" '
         f'text-anchor="middle" fill="{AMBER}" style="animation-delay:1s">{level}</text>',
-        f'<text class="fade" x="{GAUGE_X}" y="{GAUGE_Y + 30}" font-size="7.5" '
+        f'<text class="fade" x="{GAUGE_X}" y="{GAUGE_Y + 30}" font-size="8" '
         f'text-anchor="middle" fill="{TEXT_DIM}" style="animation-delay:1.1s">'
         f"TOP {percentile:.1f}%</text>",
     )

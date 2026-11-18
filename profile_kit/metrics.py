@@ -38,6 +38,7 @@ class StreakSummary:
     first: date
     current: Streak
     longest: Streak
+    last_active: date | None
 
 
 @dataclass(frozen=True)
@@ -88,7 +89,7 @@ def rank(stats: UserStats, *, all_commits: bool = True) -> Rank:
 
 
 def summarize_streak(days: list[ContributionDay]) -> StreakSummary:
-    """Compute total, first contribution and current/longest streaks.
+    """Compute total, first and last activity, and current/longest streaks.
 
     `days` must be sorted and cover every calendar day up to today. A zero
     on the most recent day does not break a streak, because that day is not
@@ -98,6 +99,7 @@ def summarize_streak(days: list[ContributionDay]) -> StreakSummary:
         raise ValueError("No contribution days to summarize")
     today = days[-1].day
     first = None
+    last = None
     total = 0
     current = Streak(0, today, today)
     longest = Streak(0, today, today)
@@ -108,6 +110,7 @@ def summarize_streak(days: list[ContributionDay]) -> StreakSummary:
         if entry.count > 0:
             if first is None:
                 first = entry.day
+            last = entry.day
             run_length += 1
             if run_length == 1:
                 run_start = entry.day
@@ -117,7 +120,7 @@ def summarize_streak(days: list[ContributionDay]) -> StreakSummary:
         elif entry.day != today:
             run_length = 0
             current = Streak(0, today, today)
-    return StreakSummary(total, first or today, current, longest)
+    return StreakSummary(total, first or today, current, longest, last)
 
 
 def weekly_bins(
