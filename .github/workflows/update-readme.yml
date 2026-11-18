@@ -28,8 +28,10 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           python generate_readme.py
-          git add README.md
+          git add README.md profile/hero.svg profile/projects
           git diff --cached --quiet || git commit -m "chore: update profile README with latest project info"
           git push origin main
         env:
           FEATURED_REPOS: ${{ vars.FEATURED_REPOS }}
+          GITHUB_TOKEN: ${{ secrets.PAT }}
+          GITHUB_REPOSITORY_OWNER: ${{ github.repository_owner }}
