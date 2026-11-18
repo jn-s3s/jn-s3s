@@ -5,7 +5,7 @@
   <a href="https://github.com/jn-s3s/netspeed-widget"><img src="./profile/projects/01-netspeed-widget.svg" alt="netspeed-widget: A native Windows taskbar widget that shows live download/upload speed, latency, a rolling traffic graph, and optional system resource meters for CPU, memory, disk activity and storage space." width="49%"></a>
   <a href="https://github.com/jn-s3s/opencode-tui-quota-usage"><img src="./profile/projects/02-opencode-tui-quota-usage.svg" alt="opencode-tui-quota-usage: OpenCode quota usage sidebar tracker for OpenCode V2 CLI/TUI (windows only)" width="49%"></a>
   <a href="https://github.com/jn-s3s/zero-cost-llms"><img src="./profile/projects/03-zero-cost-llms.svg" alt="zero-cost-llms: Collects the free model catalogues of several LLM providers" width="49%"></a>
-  <a href="https://github.com/jn-s3s/maestro"><img src="./profile/projects/04-maestro.svg" alt="maestro: Maestro - Conduct all your AI coding agent configurations from one podium." width="49%"></a>
+  <a href="https://github.com/jn-s3s/proxy-list"><img src="./profile/projects/04-proxy-list.svg" alt="proxy-list: Automatically fetch, test, and publish fresh HTTP/SOCKS4/SOCKS5 proxy lists. Updated every 2 hours via GitHub Actions. Raw lists served via GitHub Pages." width="49%"></a>
 </p>
 <p align="center">
   <img src="./profile/stats.svg" alt="Core metrics and rank" width="49%">
